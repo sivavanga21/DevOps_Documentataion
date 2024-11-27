@@ -3,12 +3,12 @@
   1) Automate infrastructure creation, update, and deletion.
   2) Ensure consistency by codifying the infrastructure.
   3) Collaborate easily since the configuration can be stored in version control.
-  4) mSupport multiple cloud providers, such as AWS, Azure, and GCP.
+  4) Support multiple cloud providers, such as AWS, Azure, and GCP.
 
 ## main componets of terraform 
   1) Providers--think of providers as the bridge to communicate with cloud platforms (like AWS, Azure).
   2) Resources--Resources are the actual components Terraform creates, like servers or databases.
-  3)  Modules--Modules are reusable Terraform configurations, like pre-built templates.
+  3) Modules--Modules are reusable Terraform configurations, like pre-built templates.
   4) Variables--Variables make your configuration dynamic by allowing inputs.
   5) State--Terraform keeps a record of what’s been created in a "state file."
   6) Output--Outputs show important details after running Terraform.
@@ -69,68 +69,67 @@ By default, Terraform stores the state locally in a file called terraform.tfstat
   export TF_VAR_DB_PASSWORD="SECURE_PASSWORD"
 
 ## WHAT ARE WORKSPACES IN TERRAFORM AND ITS USE CASES
-    
-Workspaces in Terraform provide a way to manage multiple environments (e.g., development, staging, production) within a single Terraform configuration. 
-They allow you to maintain separate state files for each environment, preventing conflicts and enabling easier management of resources.
-(to maintain separate files for different environment like dev,uat,production,staging with out duplicatin terraform code)
-(each workspace has its own state file ensure the changes in one workspace does not affect other workspace)
-# terraform workspace new <workspace_name>
-# terraform workspace new dev
-# terraform workspace list
+    Workspaces in Terraform provide a way to manage multiple environments (e.g., development, staging, production) within a single Terraform configuration. 
+    They allow you to maintain separate state files for each environment, preventing conflicts and enabling easier management of resources.
+    (to maintain separate files for different environment like dev,uat,production,staging with out duplicatin terraform code)
+    (each workspace has its own state file ensure the changes in one workspace does not affect other workspace)
+    # terraform workspace new <workspace_name>
+    # terraform workspace new dev
+    # terraform workspace list
 
 (terraform workspace select dev
 terraform apply)
 
 ## what is the purpose of the terraform taint and untaint 
-terraform taint
---(Marks a specific resource for recreation during the next terraform apply run.)
---(When you need to recreate a resource (e.g., due to a suspected issue, configuration drift, or to test a change)
-   without modifying the resource's configuration.)
-  COMMAND (terraform taint aws_instance.example)
+    terraform taint
+    --(Marks a specific resource for recreation during the next terraform apply run.)
+    --(When you need to recreate a resource (e.g., due to a suspected issue, configuration drift, or to test a change)
+    without modifying the resource's configuration.)
+    COMMAND (terraform taint aws_instance.example)
 
-terraform untaint
---(Removes the taint (mark for recreation) from a resource.)
---(If a resource was previously marked as tainted (manually or due to an error)
- but you no longer want it to be recreated, you can use this command to unmark it.
-cCOMMAND (terraform untaint aws_instance.example)
+    terraform untaint
+    --(Removes the taint (mark for recreation) from a resource.)
+    --(If a resource was previously marked as tainted (manually or due to an error)
+    but you no longer want it to be recreated, you can use this command to unmark it.
+    cCOMMAND (terraform untaint aws_instance.example)
 
 ## difference between local exec and remote-exec
-local exec- (Runs the command locally on the system where Terraform is being executed.)
-            (When you want to execute a script or command on your local machine, 
-            such as interacting with a local CLI tool or triggering other workflows.)
+    local exec- (Runs the command locally on the system where Terraform is being executed.)
+                (When you want to execute a script or command on your local machine, 
+                such as interacting with a local CLI tool or triggering other workflows.)
 
-remote exec- (Runs the command remotely on the resource created by Terraform (e.g., an EC2 instance or a virtual machine).
-             (When you want to execute commands on the remote resource, such as installing software or configuring the resource after it is created.)
+    remote exec- (Runs the command remotely on the resource created by Terraform (e.g., an EC2 instance or a virtual machine).
+                (When you want to execute commands on the remote resource, such as installing software or configuring the resource after it is created.)
 
 ## how do you handle drift detection in terraform
-(terraform drift is identifying difference of between the acutal state infrastructure file and desire state difined in cloud)
+    (terraform drift is identifying difference of between the acutal state infrastructure file and desire state difined in cloud)
 
 ## what does terraform validate command used for
-The terraform validate command is used to check the syntax and structure of the Terraform configuration files.
- It ensures that the files are correctly formatted and that the configuration is valid, but it does not actually apply any changes to the infrastructure.
+    The terraform validate command is used to check the syntax and structure of the Terraform configuration files.
+    It ensures that the files are correctly formatted and that the configuration is valid, but it does not actually apply any changes to the infrastructure.
 
 ## what is the function of terraform fmt 
-reformat your confirgation file structure
-ex: no of people are working on same repo one people not write the proper structure format of terraform that time we use for terraform fmt command 
-command for restructure the file
+    reformat your confirgation file structure
+    ex: no of people are working on same repo one people not write the proper structure format of terraform that time we use for terraform fmt command 
+    command for restructure the file
 
 ## what would use terraform destroy
-we can use terraform destroy command to destroy the infrastructure througth state file 
-delete our resources in clould environment
+    we can use terraform destroy command to destroy the infrastructure througth state file 
+    delete our resources in clould environment
 
 ## how does the terraform state list command work 
-to find out the resources in state file paritucal resource
-comamnd terraform state list [{resource_id}]
-        terraform state list [options] [address]
+    to find out the resources in state file paritucal resource
+    comamnd terraform state list [{resource_id}]
+            terraform state list [options] [address]
 
 ## how does the terraform state show
- give detailed information about specific resources in state file
+    give detailed information about specific resources in state file
 
 ## explain use of terraform output
-terraform output command is used to retrive and display the ouutput files in terraform confirgation
-if you want know the specific resources of ec2 instance id use this command 
-if you retrive output value to json file we can use below command terraform output -json > output.json
-command: terraform output instance id
+    terraform output command is used to retrive and display the output files in terraform configaration
+    if you want know the specific resources of ec2 instance id use this command 
+    if you retrive output value to json file we can use below command terraform output -json > output.json
+    command: terraform output instance id
 
 ## what does terraform refresh do
 terraform refresh command differenciate the current state file and real world of infrastructure 
@@ -280,3 +279,14 @@ you can use the terraform force-unlock command manuall realese the state file th
 
 ## you want to create terraform module that can be reused across different projects how can you do that but you need to parameterize the certain value that are specific to each project
     To create reusable Terraform modules, organize your code into separate directories and parameterize the values that change for each project. Use input variables for customization.
+
+## difference between terraform import and terraform data source
+    Terraform import is used to import existing infrastructure into Terraform, while terraform data source is used to retrieve data from external sources.
+
+    Import: Once a resource is imported, Terraform manages it and can create, update, or destroy it.
+    Data Source: Data sources are used to retrieve data from external sources, such as AWS API or other services, and can be used to populate variables or to create new resources based on the retrieved data.
+
+## Difference between user_data and provisioner in terraform
+    User data is a script that is run on the instance when it is launched, while provisioner is a way to run scripts or commands on the instance after it has been created.
+
+    User data is typically used to set up the initial configuration of the instance, such as installing software or configuring services. It is run when the instance is launched and is not affected by changes to the Terraform configuration. 
