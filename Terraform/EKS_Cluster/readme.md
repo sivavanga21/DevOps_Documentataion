@@ -1,0 +1,1 @@
+![alt text](eks_cluster.png)

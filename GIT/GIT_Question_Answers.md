@@ -27,5 +27,17 @@ GIT Commands
 
     git commit --amend
     git push --force
-    
+
     git rm <file>
+
+
+
+
+
+Sadhana Kulathuran
+Suresh Ramasamy
+jayanta.banerjee@ascendion.com
+
+Divya G
+Senior Executive - Human Resources
+Human Resources

@@ -128,7 +128,7 @@ Elastic Kubernetes Service
 ----------------------
 Database Tools
 ----------------------
-RDS
+RDS- Relational Database Service
 DynamoDB
 Redshift
 Aurora
@@ -238,3 +238,15 @@ AWS Well-Architected Tool
 AWS Audit Manager
 AWS Artifact
 AWS CloudShell
+
+
+============================================================
+EKS
+-----------
+## Your team deployed a new pod to an EKS cluster, but it’s not starting. What steps would you take to troubleshoot this issue?
+    Check Pod Status: Run "kubectl get pods" to check the status. 
+                      Look for error states like Pending or CrashLoopBackOff.
+    Inspect Pod Details: Use "kubectl describe pod <pod-name>" to inspect details, including events and errors.
+    Pod Logs: Use "kubectl logs <pod-name>" to view logs.
+    Network issue: Confirm DNS resolution with a simple nslookup or ping.
+    check iam policy:

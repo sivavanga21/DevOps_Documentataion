@@ -89,7 +89,7 @@ terraform apply)
 
     terraform untaint
     --(Removes the taint (mark for recreation) from a resource.)
-    --(If a resource was previously marked as tainted (manually or due to an error)
+    --(If a resource was previously marked as tainted (manually or due to an error))
     but you no longer want it to be recreated, you can use this command to unmark it.
     cCOMMAND (terraform untaint aws_instance.example)
 
@@ -98,7 +98,7 @@ terraform apply)
                 (When you want to execute a script or command on your local machine, 
                 such as interacting with a local CLI tool or triggering other workflows.)
 
-    remote exec- (Runs the command remotely on the resource created by Terraform (e.g., an EC2 instance or a virtual machine).
+    remote exec- (Runs the command remotely on the resource created by Terraform (e.g., an EC2 instance or a virtual machine)).
                 (When you want to execute commands on the remote resource, such as installing software or configuring the resource after it is created.)
 
 ## how do you handle drift detection in terraform
